@@ -9,13 +9,13 @@ include '../model/Database.php';
 $database = new Database();
 
 if (isset($_POST['aggiungi'])) {
-  $album = $_POST['album'];
-  $interprete = $_POST['interprete'];
-  $anno = $_POST['anno'];
-  $paese = $_POST['paese'];
-  $rating = $_POST['rating'];
+  $album = $database->conn->real_escape_string($_POST['album']); // real_escape_string per inserire album con virgolette...
+  $interprete = $database->conn->real_escape_string($_POST['interprete']);
+  $anno = intval($_POST['anno']);
+  $paese = $database->conn->real_escape_string($_POST['paese']);
+  $rating = intval($_POST['rating']);
 
-  $query = "INSERT INTO cds (Album, Interprete, Anno, Paese, Rating) 
+  $query = "INSERT INTO cds (Album, Interprete, Anno, Paese, Rating)
               VALUES ('$album', '$interprete', $anno, '$paese', $rating)";
 
   $database->query($query);
@@ -24,12 +24,12 @@ if (isset($_POST['aggiungi'])) {
 }
 
 if (isset($_POST['modifica'])) {
-  $id = $_POST['ID'];
-  $album = $_POST['album'];
-  $interprete = $_POST['interprete'];
-  $anno = $_POST['anno'];
-  $paese = $_POST['paese'];
-  $rating = $_POST['rating'];
+  $id = $database->conn->real_escape_string($_POST['ID']);
+  $album = $database->conn->real_escape_string($_POST['album']);
+  $interprete = $database->conn->real_escape_string($_POST['interprete']);
+  $anno = intval($_POST['anno']);
+  $paese = $database->conn->real_escape_string($_POST['paese']);
+  $rating = intval($_POST['rating']);
 
   $query = "UPDATE cds SET
               Album='$album',
@@ -37,7 +37,7 @@ if (isset($_POST['modifica'])) {
               Anno=$anno,
               Paese='$paese',
               Rating=$rating
-              WHERE id=$id";
+              WHERE ID=$id";
 
   $database->query($query);
   header('Location: ' . $_SERVER['PHP_SELF']);
