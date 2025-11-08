@@ -1,4 +1,6 @@
 <?php
+session_start(); // 👈 Deve essere sempre la primissima istruzione
+
 // Per forzare stampa errori su Lampp
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -17,8 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $database->query($query);
 
     if ($result && $result->num_rows === 1) {
-        header("Location: ./view/home.php");
-        exit();
+        if ($result && $result->num_rows === 1) {
+            $user = $result->fetch_assoc();
+
+            $_SESSION['username'] = $user['Username'];
+
+            header("Location: ./view/home.php");
+            exit();
+        }
     } else {
         $messaggio = 'Username o password errati.';
     }

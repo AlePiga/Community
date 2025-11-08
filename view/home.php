@@ -9,11 +9,11 @@ include '../model/Database.php';
 $database = new Database();
 
 if (isset($_POST['aggiungi'])) {
-  $album = $database->conn->real_escape_string($_POST['album']); // real_escape_string per inserire album con virgolette...
+  $album = $database->conn->real_escape_string($_POST['album']); // real_escape_string per inserire album con virgolette
   $interprete = $database->conn->real_escape_string($_POST['interprete']);
-  $anno = intval($_POST['anno']);
+  $anno = $_POST['anno'];
   $paese = $database->conn->real_escape_string($_POST['paese']);
-  $rating = intval($_POST['rating']);
+  $rating = $_POST['rating'];
 
   $query = "INSERT INTO cds (Album, Interprete, Anno, Paese, Rating)
               VALUES ('$album', '$interprete', $anno, '$paese', $rating)";
@@ -27,9 +27,9 @@ if (isset($_POST['modifica'])) {
   $id = $database->conn->real_escape_string($_POST['ID']);
   $album = $database->conn->real_escape_string($_POST['album']);
   $interprete = $database->conn->real_escape_string($_POST['interprete']);
-  $anno = intval($_POST['anno']);
+  $anno = $_POST['anno'];
   $paese = $database->conn->real_escape_string($_POST['paese']);
-  $rating = intval($_POST['rating']);
+  $rating = $_POST['rating'];
 
   $query = "UPDATE cds SET
               Album='$album',
@@ -90,8 +90,8 @@ function stelline($numero)
 </head>
 
 <body class="select-none bg-gray-50 text-gray-800 antialiased">
+  <?php include './components/navbar.php'; ?>
   <div class="max-w-6xl mx-auto p-6">
-    <h1 class="text-5xl font-semibold text-center mt-3 mb-8">Collezione CD</h1>
 
     <!-- Tabella -->
     <div class="overflow-x-auto bg-white rounded-xl shadow">
@@ -145,59 +145,11 @@ function stelline($numero)
       <?php if (count($cds) > 0) echo "Caricate " . count($cds) . " righe dal database."; ?>
     </p>
 
-    <!-- Pulsante Aggiungi -->
-    <div class="mb-4 flex justify-end">
-      <button onclick="apriModaleAggiungi()" class="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-medium px-6 py-2 rounded-lg transition">
-        Aggiungi CD
-      </button>
-    </div>
+
   </div>
 
-  <!-- Modale Aggiungi/Modifica -->
-  <div id="modale" class="hidden fixed inset-0 flex items-center justify-center z-50" style="background-color: rgba(0, 0, 0, 0.5);">
-    <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-      <h2 id="titoloModale" class="text-2xl font-semibold mb-6">Aggiungi CD</h2>
-      <form method="POST">
-        <input type="hidden" name="id" id="idCD">
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium mb-2">Album</label>
-          <input type="text" name="album" id="album" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium mb-2">Interprete</label>
-          <input type="text" name="interprete" id="interprete" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium mb-2">Anno</label>
-          <input type="number" name="anno" id="anno" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium mb-2">Paese</label>
-          <input type="text" name="paese" id="paese" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-
-        <div class="mb-6">
-          <label class="block text-sm font-medium mb-2">Rating (1-5)</label>
-          <input type="number" name="rating" id="rating" min="1" max="5" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-
-        <div class="flex justify-end space-x-3">
-          <button type="button" onclick="chiudiModale()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg transition">
-            Annulla
-          </button>
-          <button type="submit" name="aggiungi" id="pulsanteSalva" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition">
-            Salva
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Modale Elimina -->
+  <?php include './components/modalAggiungiModifica.php'; ?>
+  <?php include './components/modalDelete.php'; ?>
   <div id="modaleElimina" class="hidden fixed inset-0 flex items-center justify-center z-50" style="background-color: rgba(0, 0, 0, 0.5);">
     <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
       <h2 class="text-2xl font-semibold mb-4">Conferma Eliminazione</h2>
@@ -215,9 +167,13 @@ function stelline($numero)
       </form>
     </div>
   </div>
-
   <script>
     function apriModaleAggiungi() {
+      document.getElementById('album').value = ""; // Quando apro il modale i campi sono vuoti
+      document.getElementById('interprete').value = "";
+      document.getElementById('anno').value = "";
+      document.getElementById('paese').value = "";
+      document.getElementById('rating').value = "";
       document.getElementById('modale').classList.remove('hidden'); // Per renderlo invisibile
     }
 
