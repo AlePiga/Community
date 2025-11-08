@@ -8,8 +8,6 @@ if (isset($nome_utente) && $nome_utente !== '') {
 	$nome = $nome_utente;
 } elseif (!empty($_SESSION['nome_utente'])) {
 	$nome = $_SESSION['nome_utente'];
-} else {
-	$nome = 'ospite';
 }
 
 $nome = htmlspecialchars($nome);
