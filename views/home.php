@@ -144,8 +144,6 @@ function stelline($numero)
     <p class="text-sm text-center text-gray-500 mt-3">
       <?php if (count($cds) > 0) echo "Caricate " . count($cds) . " righe dal database."; ?>
     </p>
-
-
   </div>
 
   <?php include './components/modalAggiungiModifica.php'; ?>
@@ -174,6 +172,14 @@ function stelline($numero)
       document.getElementById('anno').value = "";
       document.getElementById('paese').value = "";
       document.getElementById('rating').value = "";
+      // Assicuriamoci che il campo ID sia vuoto quando aggiungiamo
+      document.getElementById('idCD').value = "";
+      // Il pulsante deve inviare come 'aggiungi'
+      var btn = document.getElementById('pulsanteSalva');
+      if (btn) {
+        btn.name = 'aggiungi';
+        btn.textContent = 'Salva';
+      }
       document.getElementById('modale').classList.remove('hidden'); // Per renderlo invisibile
     }
 
@@ -184,6 +190,12 @@ function stelline($numero)
       document.getElementById('anno').value = cd.Anno;
       document.getElementById('paese').value = cd.Paese;
       document.getElementById('rating').value = cd.Rating;
+      // Cambiamo il nome del pulsante in modo che PHP rilevi la modifica
+      var btn = document.getElementById('pulsanteSalva');
+      if (btn) {
+        btn.name = 'modifica';
+        btn.textContent = 'Modifica';
+      }
       document.getElementById('modale').classList.remove('hidden'); // Per renderlo invisibile
     }
 

@@ -1,7 +1,7 @@
 <?php
 class Database
 {
-    public $conn;
+    private $conn;
     public function __construct()
     {
         require_once 'config.php';
