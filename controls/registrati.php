@@ -8,15 +8,14 @@ $password = $_POST["password"];
 $password_confirm = $_POST["password_confirm"];
 
 if ($password !== $password_confirm) {
-	header("Location: ../views/errorepassword_view.php");
+	header("Location: ../views/errors/login/errorepassword_view.php");
 	exit();
 }
 
-$result = $database->query("SELECT id FROM utenti WHERE Username = ?");
+$result = $database->query("SELECT * FROM `utenti` WHERE `Username` = '$username'");
 
 if ($result->num_rows > 0) {
-	// utente già presente → vai al login
-	header("Location: ../index.php?user_exists=1");
+	header("Location: ../views/errors/login/erroregiapresente.php");
 	exit();
 }
 

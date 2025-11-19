@@ -9,9 +9,7 @@ $database = new Database();
 
 $username = trim($_POST['username'] ?? '');
 $password = trim($_POST['password'] ?? '');
-
-$query = "SELECT * FROM utenti WHERE Username = '$username'";
-$result = $database->query($query);
+$result = $database->query("SELECT * FROM utenti WHERE Username = '$username'");
 
 if ($result->num_rows === 1) {
 	$utente = $result->fetch_assoc();
@@ -22,5 +20,5 @@ if ($result->num_rows === 1) {
 	}
 }
 
-header("Location: ../views/errorelogin_view.php");
+header("Location: ../views/errors/login/errorelogin_view.php");
 exit();

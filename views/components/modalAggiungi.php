@@ -1,49 +1,40 @@
-<!-- Modale Aggiungi/Modifica -->
-<div id="modale" class="hidden fixed inset-0 flex items-center justify-center z-50" style="background-color: rgba(0, 0, 0, 0.5);">
+<div id="modalAggiungi" class="hidden fixed inset-0 flex items-center justify-center z-50" style="background-color: rgba(0, 0, 0, 0.5);">
   <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-    <h2 id="titoloModale" class="text-2xl font-semibold mb-6">Aggiungi CD</h2>
-    <form method="POST">
+    <h2 class="text-2xl font-semibold mb-6">Aggiungi CD</h2>
+    <form method="POST" action="../controls/aggiungi.php">
       <input type="hidden" name="ID" id="idCD">
-
       <div class="mb-4">
         <label class="block text-sm font-medium mb-2">Album</label>
         <input type="text" name="album" id="album" required
           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
-
       <div class="mb-4">
         <label class="block text-sm font-medium mb-2">Interprete</label>
         <input type="text" name="interprete" id="interprete" required
           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
-
       <div class="mb-4">
         <label class="block text-sm font-medium mb-2">Anno</label>
         <input type="number" name="anno" id="anno" required
           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
-
-      <!-- AUTOCOMPLETE PAESE --      <!-- AUTOCOMPLETE PAESE -->
-      >
       <div class="mb-4 relative">
         <label class="block text-sm font-medium mb-2">Paese</label>
         <input type="text" name="paese" id="paese" autocomplete="off" required
           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-        <!-- Dropdown -->
         <ul id="dropdownPaesi"
           class="absolute left-0 right-0 bg-white border border-gray-300 rounded-lg shadow-md mt-1 hidden z-10 max-h-40 overflow-y-auto">
         </ul>
       </div>
 
       <div class="mb-6">
-        <label class="block text-sm font-medium mb-2">Rating (1-5)</label>
+        <label class="block text-sm font-medium mb-2">Rating (da 1 a 5)</label>
         <input type="number" name="rating" id="rating" min="1" max="5" required
           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
 
       <div class="flex justify-end space-x-3">
-        <button type="button" onclick="chiudiModale()"
+        <button type="button" onclick="chiudiModalAggiungi()"
           class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg transition">
           Annulla
         </button>
@@ -65,12 +56,13 @@
     "Isola di Christmas", "Isola di Man", "Isole Aland", "Isole Cayman", "Isole Cocos", "Isole Cook", "Isole Falkland", "Isole Faroe", "Isole Heard ed Isole McDonald", "Isole Marianne Settentrionali", "Isole Marshall", "Isole Minori lontane dagli Stati Uniti", "Isole Solomon", "Isole Turks e Caicos", "Isole Vergini Americane", "Isole Vergini Britanniche",
     "Italia", "Jersey", "Kazakistan", "Kenya", "Kirghizistan", "Kiribati", "Kuwait", "Laos", "Lesotho", "Lettonia", "Libano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Lussemburgo", "Madagascar", "Malawi", "Maldive", "Malesia", "Mali", "Malta", "Marocco", "Martinica", "Mauritania", "Mauritius",
     "Mayotte", "Messico", "Micronesia", "Moldavia", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Mozambico", "Myanmar", "Namibia", "Nauru", "Nepal", "Nicaragua", "Niger", "Nigeria", "Niue", "Norvegia", "Nuova Caledonia", "Nuova Zelanda", "Oman", "Paesi Bassi", "Pakistan", "Palau", "Palestina", "Panama",
-    "Papua Nuova Guinea", "Paraguay", "Perù", "Pitcairn", "Polinesia Francese", "Polonia", "Portogallo", "Portorico", "Qatar", "Regione Amministrativa Speciale di Hong Kong della Repubblica Popolare Cinese", "Regione Amministrativa Speciale di Macao della Repubblica Popolare Cinese", "Regno Unito", "Repubblica Ceca", "Repubblica Centrafricana", "Repubblica Democratica del Congo", "Repubblica Dominicana",
-    "Repubblica di Macedonia", "Romania", "Ruanda", "Réunion", "Sahara Occidentale", "Saint Kitts e Nevis", "Saint Lucia", "Saint Pierre e Miquelon", "Saint Vincent e Grenadines", "Samoa", "Samoa Americane", "San Bartolomeo", "San Marino", "Sant’Elena", "Sao Tomé e Príncipe", "Senegal", "Serbia", "Serbia e Montenegro", "Seychelles", "Sierra Leone",
+    "Papua Nuova Guinea", "Paraguay", "Perù", "Pitcairn", "Polinesia Francese", "Polonia", "Portogallo", "Portorico", "Qatar", "Hong Kong", "Macao", "Regno Unito", "Repubblica Ceca", "Repubblica Centrafricana", "Repubblica Democratica del Congo", "Repubblica Dominicana",
+    "Repubblica di Macedonia", "Romania", "Ruanda", "Réunion", "Sahara Occidentale", "Saint Kitts e Nevis", "Saint Lucia", "Saint Pierre e Miquelon", "Saint Vincent e Grenadines", "Samoa", "Samoa Americane", "San Bartolomeo", "San Marino", "Sant’Elena", "Sao Tomé e Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
     "Singapore", "Siria", "Slovacchia", "Slovenia", "Somalia", "Spagna", "Sri Lanka", "Stati Uniti", "Sudafrica", "Sudan", "Suriname", "Svalbard e Jan Mayen", "Svezia", "Svizzera", "Swaziland", "Tagikistan", "Tailandia", "Taiwan", "Tanzania", "Territori australi francesi", "Territori palestinesi occupati", "Territorio Britannico dell’Oceano Indiano", "Timor Est",
-    "Togo", "Tokelau", "Tonga", "Trinidad e Tobago", "Tunisia", "Turchia", "Turkmenistan", "Tuvalu", "Ucraina", "Uganda", "Ungheria", "Uruguay", "Uzbekistan", "Vanuatu", "Vaticano", "Venezuela", "Vietnam", "Wallis e Futuna", "Yemen", "Zambia", "Zimbabwe", "regione non valida o sconosciuta"
+    "Togo", "Tokelau", "Tonga", "Trinidad e Tobago", "Tunisia", "Turchia", "Turkmenistan", "Tuvalu", "Ucraina", "Uganda", "Ungheria", "Uruguay", "Uzbekistan", "Vanuatu", "Vaticano", "Venezuela", "Vietnam", "Wallis e Futuna", "Yemen", "Zambia", "Zimbabwe", "Sconosciuto"
   ];
 
+  const paesiSorted = paesi.sort();
   const inputPaese = document.getElementById("paese");
   const dropdown = document.getElementById("dropdownPaesi");
 
@@ -81,7 +73,7 @@
 
     if (!query) return;
 
-    const risultati = paesi.filter(p => p.toLowerCase().includes(query));
+    const risultati = paesiSorted.filter(p => p.toLowerCase().includes(query));
 
     if (risultati.length === 0) return;
 

@@ -35,7 +35,7 @@ $nome = htmlspecialchars($nome);
 							}
 							?>
 						</p>
-						<button onclick="apriModaleAggiungi()"
+						<button onclick="apriModalAggiungi()"
 							class="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-medium px-6 py-2 rounded-lg transition hover:opacity-90">
 							Aggiungi CD
 						</button>
