@@ -1,6 +1,31 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Creato il: Nov 19, 2025 alle 21:19
+-- Versione del server: 10.4.32-MariaDB
+-- Versione PHP: 8.0.30
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `community`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `cds`
+--
 
 CREATE TABLE `cds` (
   `ID` int(11) NOT NULL,
@@ -10,6 +35,10 @@ CREATE TABLE `cds` (
   `Paese` varchar(56) NOT NULL,
   `Rating` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `cds`
+--
 
 INSERT INTO `cds` (`ID`, `Album`, `Interprete`, `Anno`, `Paese`, `Rating`) VALUES
 (1, 'Atom Heart Mother', 'Pink Floyd', 1970, 'Regno Unito', 5),
@@ -105,7 +134,7 @@ ALTER TABLE `cds`
 -- AUTO_INCREMENT per la tabella `cds`
 --
 ALTER TABLE `cds`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
