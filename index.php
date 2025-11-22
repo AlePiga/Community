@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Login / Collezione CD</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="icon" type="image/x-icon" href="./assets/CDSpin.gif">
 </head>
 
 <body class="select-none bg-gray-50 text-gray-800 antialiased">

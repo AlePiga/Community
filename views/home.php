@@ -28,6 +28,7 @@ function stelline($numero)
   <script src="../script.js"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Collezione CD</title>
+  <link rel="icon" type="image/x-icon" href="../assets/CDSpin.gif">
 </head>
 
 <body class="select-none bg-gray-50 text-gray-800 antialiased">
