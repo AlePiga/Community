@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 19, 2025 alle 21:19
+-- Creato il: Dic 08, 2025 alle 18:35
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.0.30
 
@@ -107,14 +107,16 @@ INSERT INTO `cds` (`ID`, `Album`, `Interprete`, `Anno`, `Paese`, `Rating`) VALUE
 (73, 'ASTROWORLD', 'Travis Scott', 2018, 'Stati Uniti', 4),
 (74, 'Utopia', 'Travis Scott', 2023, 'Stati Uniti', 4),
 (75, 'Goblin', 'Tyler, The Creator', 2011, 'Stati Uniti', 3),
-(76, 'Wolf', 'Tyler, The Creator', 2014, 'Stati Uniti', 4),
+(76, 'Wolf', 'Tyler, The Creator', 2013, 'Stati Uniti', 4),
 (77, 'Cherry Bomb', 'Tyler, The Creator', 2015, 'Stati Uniti', 2),
 (78, 'Flower Boy', 'Tyler, The Creator', 2017, 'Stati Uniti', 4),
 (79, 'IGOR', 'Tyler, The Creator', 2019, 'Stati Uniti', 5),
 (80, 'Call Me If You Get Lost', 'Tyler, The Creator', 2021, 'Stati Uniti', 4),
 (81, 'Historicity', 'Vijay Iyer Trio', 2009, 'Germania', 3),
-(82, 'Evangelion Finally', 'AA. VV.', 2020, 'Giappone', 5),
-(83, 'Nevermind (30th Anniversary Super Deluxe)', 'Nirvana', 1997, 'Stati Uniti', 5);
+(82, 'Evangelion Finally', 'Yōko Takahashi / AA. VV.', 2020, 'Giappone', 5),
+(83, 'Nevermind (30th Anniversary Super Deluxe)', 'Nirvana', 1997, 'Stati Uniti', 5),
+(88, 'Heaven or Las Vegas', 'Cocteau Twins', 1990, 'Regno Unito', 5),
+(89, 'Obscured by Clouds', 'Pink Floyd', 1972, 'Regno Unito', 4);
 
 --
 -- Indici per le tabelle scaricate
@@ -134,7 +136,7 @@ ALTER TABLE `cds`
 -- AUTO_INCREMENT per la tabella `cds`
 --
 ALTER TABLE `cds`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
